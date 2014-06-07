@@ -15,14 +15,23 @@
 
     <link rel="stylesheet" href="/main.css">
 
-    <link href="https://github.global.ssl.fastly.net/assets/github-58e181c5cf58206dac2f13d435da7a71ca165593.css" media="all" rel="stylesheet" type="text/css" />
-    <link href="https://github.global.ssl.fastly.net/assets/github2-1a3c410b868af7031a33d9c381adc57fbdd76b68.css" media="all" rel="stylesheet" type="text/css" />
-    
     <script type="text/javascript" async="" src="./Sakurity_files/ga.js"></script><script src="./Sakurity_files/modernizr.js"></script><style type="text/css"></style>
 <meta class="foundation-data-attribute-namespace"><meta class="foundation-mq-xxlarge"><meta class="foundation-mq-xlarge"><meta class="foundation-mq-large"><meta class="foundation-mq-medium"><meta class="foundation-mq-small"><style></style><style></style></head>
 <body>
 <div id="fb-root"></div>
-<script>(function(d, s, id) {
+<script>
+function toTitleCase(str)
+{
+  return str.replace(/\w+/g, function(txt){
+    var first = txt.charAt(0);
+    if(first.toUpperCase() == first){ return txt}else{
+    return first.toUpperCase() + txt.substr(1).toLowerCase();
+    }
+  });
+}
+
+
+(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
   js = d.createElement(s); js.id = id;
@@ -44,9 +53,11 @@
     </section>
 </nav>
 
+
 <section>
     <div class="row">
         <div id="readme" class="announce md">
+<button onclick="document.body.innerHTML=toTitleCase(document.body.innerHTML)">i'm from the middle east!</button>
 
 <article class="markdown-body entry-content" itemprop="mainContentOfPage"><h1>
 <a name="oauth-security-cheatsheet" class="anchor" href="#oauth-security-cheatsheet"><span class="octicon octicon-link"></span></a>OAuth Security Cheatsheet</h1>
