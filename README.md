@@ -142,6 +142,7 @@ Usually you need a referrer-leaking page to leak ?query parameters. There are tw
 * When redirect uses `<meta>` tag instead of 302 status and Location header. It will leak redirecting page's referrer to in the next request.
 * When you managed to add `%23`(#) in the end of `redirect_uri`. It will result in sending the code in the fragment `Location: http://CLIENT/callback/../open_redirect?to=evil#&code=CODE`
 
+
 ## Contributors
 [@homakov](http://twitter.com/homakov), 
 [@isciurus](http://twitter.com/isciurus) 
