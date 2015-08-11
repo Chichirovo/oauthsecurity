@@ -27,7 +27,7 @@ end
 
 
 get '/xss' do
-  response.headers['x-xss-auditor'] = '0;'
+  response.headers['x-xss-protection'] = '0;'
 
   "Hello, #{params[:user]}"
 end
