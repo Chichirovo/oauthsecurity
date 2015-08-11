@@ -17,3 +17,19 @@ get '/' do
   response.headers['Access-Control-Allow-Credentials'] = 'true'
   File.open('dist/Sakurity.html')
 end
+
+
+
+get '/jsonp' do
+  response.headers['content-type'] = 'text/javascript'
+  "#{params[:callback]}(0)"
+end
+
+
+get '/xss' do
+  response.headers['x-xss-auditor'] = '0;'
+
+  "Hello, #{params[:user]}"
+end
+
+
