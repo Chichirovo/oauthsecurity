@@ -13,5 +13,7 @@ disable :sessions
 #index = File.open('dist/Sakurity.html')
 
 get '/' do
+  response.headers['Access-Control-Allow-Origin'] = '*'
+  response.headers['Access-Control-Allow-Credentials'] = 'true'
   File.open('dist/Sakurity.html')
 end
