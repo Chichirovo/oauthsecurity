@@ -33,6 +33,11 @@ get '/jsonp' do
   "#{params[:callback]}(0)"
 end
 
+get '/a/b/c/jsonp' do
+  response.headers['content-type'] = 'text/javascript'
+  "#{params[:callback]}(0)"
+end
+
 get '/xss' do
   response.headers['x-xss-protection'] = '0;'
 
