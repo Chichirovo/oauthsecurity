@@ -44,8 +44,20 @@ get '/xss' do
   "<html><body>Hello, #{params[:user]}</body></html>"
 end
 
+
+get '/sw.js' do
+  response.headers['content-type'] = 'text/javascript'
+"onfetch=function(e){
+  e.respondWith(new Response('<script>alert(document.domain)</script>',{headers: {'Content-Type':'text/html'}}))
+}"
+end
+
+
+
 get '/xss2' do
   return x=<<HTML
-<script>navigator.serviceWorker.register("/jsonp?callback=onfetch%3Dfunction(e)%7B%0Ae.respondWith(new%20Response('%3Cscript%3Ealert(document.domain)%3C%2Fscript%3E'%2C%7Bheaders%3A%20%7B'Content-Type'%3A'text%2Fhtml'%7D%7D))%0A%7D%2F%2F").then(function(registration) {  console.log('ServiceWorker registration successful with scope: ',    registration.scope);}).catch(function(err) {  console.log('ServiceWorker registration failed: ', err);});</script>
+<script>navigator.serviceWorker.register("/sw.js");</script>
+<script src="/sw.js"></script>
+<a href="/sw.js"></a>
 HTML
 end
