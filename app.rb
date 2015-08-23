@@ -12,10 +12,20 @@ disable :sessions
 
 #index = File.open('dist/Sakurity.html')
 
-get '/' do
-  response.headers['Access-Control-Allow-Origin'] = '*'
-  response.headers['Access-Control-Allow-Credentials'] = 'true'
-  File.open('dist/Sakurity.html')
+
+get '/sw.js' do
+  response.headers['content-type'] = 'text/javascript'
+"onfetch=function(e){
+  e.respondWith(new Response('<script>alert(document.domain)</script>',{headers: {'Content-Type':'text/html'}}))
+}"
+end
+
+get '/xss2' do
+  return x=<<HTML
+<script>navigator.serviceWorker.register("/sw.js");</script>
+<script src="/sw.js"></script>
+<a href="/sw.js"></a>
+HTML
 end
 
 
@@ -33,10 +43,6 @@ get '/jsonp' do
   "#{params[:callback]}(0)"
 end
 
-get '/a/b/c/jsonp' do
-  response.headers['content-type'] = 'text/javascript'
-  "#{params[:callback]}(0)"
-end
 
 get '/xss' do
   response.headers['x-xss-protection'] = '0;'
@@ -45,19 +51,25 @@ get '/xss' do
 end
 
 
-get '/sw.js' do
-  response.headers['content-type'] = 'text/javascript'
-"onfetch=function(e){
-  e.respondWith(new Response('<script>alert(document.domain)</script>',{headers: {'Content-Type':'text/html'}}))
-}"
+
+
+get '/' do
+  response.headers['Access-Control-Allow-Origin'] = '*'
+  response.headers['Access-Control-Allow-Credentials'] = 'true'
+  File.open('dist/Sakurity.html')
 end
 
 
 
-get '/xss2' do
-  return x=<<HTML
-<script>navigator.serviceWorker.register("/sw.js");</script>
-<script src="/sw.js"></script>
-<a href="/sw.js"></a>
-HTML
+
+
+
+
+get '/deflate' do
+  search = params[:search].to_s
+  response.headers['Set-Cookie'] = 'SID=123123123123234345346354; Path=/; Expires=Wed, 13 Jan 2021 22:23:01 GMT; HttpOnly'
+  "Searching for #{search}"
 end
+
+
+
