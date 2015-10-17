@@ -1,4 +1,6 @@
-# State-Of-The-Art OAuth2
+# OAuth Security Cheatsheet
+
+## State-Of-The-Art OAuth2
 
 Taking into account poor quality of official OAuth2 spec and the number of vulnerable provider and client integrations, here's a <b>secure-by-default OAuth Homakov edition</b>
 
@@ -18,7 +20,7 @@ TL;DR: protect initial `/connect/provider` endpoint with CSRF, always use and re
 
 7. Optional, but recommended. Before connecting the account you should ask the user if they want to connect for example Facebook of "myfbemail@email.com". Because there are lots of attacks such as cookie forcing, login/logout CSRF, <a href="http://sakurity.com/reconnect">RECONNECT</a> that can silently relogin user into malicious account on the provider.
 
-# OAuth Security Cheatsheet
+## About this document
 
 This document describes common OAuth/Single Sign On/OpenID-related vulnerabilities. Many cross-site interactions are vulnerable to different kinds of leakings and hijackings. 
 
