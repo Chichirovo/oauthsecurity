@@ -144,7 +144,7 @@ When your victim will load crafted URL it will send him to <code>leaking_page?co
 
 <h3><a id="user-content-leaking-access_tokensigned_request-with-an-open-redirect" class="anchor" href="#leaking-access_tokensigned_request-with-an-open-redirect" aria-hidden="true"><span class="octicon octicon-link"></span></a>Leaking access_token/signed_request with an open redirect.</h3>
 
-<p>It was a media hype <a href="http://homakov.blogspot.com/2014/05/covert-redirect-faq.html">called "cover redirect"</a> but in fact it was known for years. You simply need to find an open redirect on the client's domain or its subdomains, send it as <code>redirect_uri</code> and replace <code>response_type</code> with <code>token,signed_request</code>. 302 redirect will preserve #fragment, and attacker's Javascript code will have access to location.hash.</p>
+<p>It was a media hype <a href="http://homakov.blogspot.com/2014/05/covert-redirect-faq.html">called "covert redirect"</a> but in fact it was known for years. You simply need to find an open redirect on the client's domain or its subdomains, send it as <code>redirect_uri</code> and replace <code>response_type</code> with <code>token,signed_request</code>. 302 redirect will preserve #fragment, and attacker's Javascript code will have access to location.hash.</p>
 
 <p>Leaked <code>access_token</code> can be used for spam and ruining your privacy. 
 Furthermore, leaked <code>signed_request</code> is even more sensitive data. By finding an open redirect on the client you compromise Login with Facebook completely.</p>
