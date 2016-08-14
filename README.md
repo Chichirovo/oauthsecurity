@@ -87,7 +87,7 @@ Now you can re-use leaked authorization code on the actual `redirect_uri` to log
 ## Implicit flow
 
 ### Leaking access_token/signed_request with an open redirect. 
-It was a media hype [called "cover redirect"](http://homakov.blogspot.com/2014/05/covert-redirect-faq.html) but in fact it was known for years. You simply need to find an open redirect on the client's domain or its subdomains, send it as `redirect_uri` and replace `response_type` with `token,signed_request`. 302 redirect will preserve #fragment, and attacker's Javascript code will have access to location.hash.
+It was a media hype [called "covert redirect"](http://homakov.blogspot.com/2014/05/covert-redirect-faq.html) but in fact it was known for years. You simply need to find an open redirect on the client's domain or its subdomains, send it as `redirect_uri` and replace `response_type` with `token,signed_request`. 302 redirect will preserve #fragment, and attacker's Javascript code will have access to location.hash.
 
 Leaked `access_token` can be used for spam and ruining your privacy. 
 Furthermore, leaked `signed_request` is even more sensitive data. By finding an open redirect on the client you compromise Login with Facebook completely.
